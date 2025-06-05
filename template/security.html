@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Security Question</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <main class="security-container">
+        <h2>Security Question</h2>
+        <p>{{ question }}</p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="flash-messages error">
+              {% for msg in messages %}
+                <li>{{ msg }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <form method="POST" novalidate>
+            <input type="text" name="answer" placeholder="Your Answer" required autocomplete="off" />
+            <button type="submit">Submit Answer</button>
+        </form>
+    </main>
+</body>
+</html>
